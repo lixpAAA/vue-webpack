@@ -2,4 +2,20 @@
 1. 安装node
 2. 全局安装webpack ： npm install webpack
 3. 打包文件： 命令行webpack  '要打包的文件名' '打包后的文件名'
-4. 省去长串命令： 在webpack.config.js文件里配置入口和出口文件
+4. 省去长串命令： 在webpack.config.js文件里配置入口和出口文件, 然后在脚本里配置"build": "webpack"
+5. css文件： css-loader只负责对css文件进行加载处理，不负责将css文件引入DOM， 这时需要sytle-loader
+   配合， 例如： module: {
+                    rules: [
+                          {
+                                test: /\.css$/,
+                                use: ['style-loader', 'css-loader']
+                          }
+                    ] 
+                  }
+6.  当小于limit时将会转换为base64格式，大于时需要file-loader
+7.  转化为es6语法：npm install babel-loader@7 babel-core babel-preset-es2015 -D 
+    这里如果是babel-preset-env的话，还需额外的配置 一个 .babelrc文件和配置    
+        options: {
+            presets: ['@babel/preset-env'] // 如果是babel-preset-es2015的话这里就是'es2015'
+          }   
+8. vue实例中既有el又有template，将会吧template的内容嵌入到el中    
