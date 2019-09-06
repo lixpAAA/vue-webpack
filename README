@@ -18,4 +18,16 @@
         options: {
             presets: ['@babel/preset-env'] // 如果是babel-preset-es2015的话这里就是'es2015'
           }   
-8. vue实例中既有el又有template，将会吧template的内容嵌入到el中    
+8. vue实例中既有el又有template，将会吧template的内容嵌入到el中  
+9. 版权插件new webpack.BannerPlugin('版权归***所有')
+10.HtmlWebpckPlugin 用于将index.html打包进dist：
+      @1.  自动生成一个index.html文件（可以指定模版来生成）
+	@2.  将打包的js文件，自动通过script标签插入body中
+11.js压缩插件uglifyjs-webpack-plugin
+12.webpack-dev-server 开发时实时监听文件（可配置监听的文件，监听的端口，是否实时监听）
+13."scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "dev": "webpack-dev-server" // 配置--open可以设置自动打开浏览器， 同时这里打包的文件是放在
+                                // 内存中的，所以一般在磁盘中看不到
+  },

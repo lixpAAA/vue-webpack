@@ -6,6 +6,7 @@
 
 <script>
 export default {
+  components: {},
   created() {},
   mounted() {},
   data() {

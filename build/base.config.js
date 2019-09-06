@@ -1,11 +1,18 @@
+/**
+ * webpack 公共的配置文件
+ */
 const path = require('path') // node里的路径处理工具
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin') // 对于大于vue-loader@14.0.0，要用此插件
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const UglifyjsWbpackPlugin = require('uglifyjs-webpack-plugin')
+
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '../dist'),
     filename: 'index.js',
-    publicPath: '../dist/' //   文件URL前加上路径
+    // publicPath: '../dist/' //   引用文件URL前加上路径（dist文件夹下有index。html，所以不需要）
   },
   resolve: {
     alias: {  // 别名配置，当import 。。。from。。。（文件别名）的时候,去指定文件夹下找文件
@@ -13,7 +20,13 @@ module.exports = {
     },
     extensions: ['.vue', '.js']
   },
-  plugins: [new VueLoaderPlugin()],
+  plugins: [new VueLoaderPlugin(),
+  new webpack.BannerPlugin('版权归lxpAAA所有'),
+  new HtmlWebpackPlugin({
+    template: './src/index.html' // 指定打包后的index.html模版
+  }),
+  ],
+
   module: {
     rules: [
       {
